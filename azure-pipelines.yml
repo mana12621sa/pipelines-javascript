@@ -6,8 +6,18 @@
 trigger:
 - master
 
+strategy:
+  matrix:
+    nodejs_linux:
+      imageName: "ubuntu-16.04"
+      nodejs_version: "10.x"
+    nodejs_windows:
+      imageName: "vs2017-win2016"
+      nodejs_version: "11.x"
+  maxParallel: 2
+
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: $(imageName)
 
 steps:
 - task: NodeTool@0
